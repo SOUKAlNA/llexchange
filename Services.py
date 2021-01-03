@@ -57,7 +57,7 @@ class RatingService():
 #-------------------------------------------------------------
 #BLOCKING SERVICE
 
-class DisscusionMngService():
+class DisscusionService():
 
     def isBlocked(self, c_username, t_username):
         blocked_users = User.objects.get(username=c_username).blocked_users.users.all()
