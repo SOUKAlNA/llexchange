@@ -80,16 +80,23 @@ The language of implementation of this project will be Python. To isolate depend
 
 ## Physical Architecture- Initial:
 The architecture is a multi-tier architecture along with a firewall for security and an external server to enforce the email validation requirement. 
- 
+
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/InitialPhysicalArchitecture.png)
+
 ## Physical Architecture- Protocol & Software:
 The webservice protocol that will be used is REST. HTTPS will also be used to enforce security of data transfer. The database will be managed using PostgreSQL.
+
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/ProtocolPhysicalArchitecture.png)
  
 ## Physical Architecture- Resilient (No SPoF)/ Scalability:
 To enforce the No SPoF and high availability requirements, reverse proxying Nginx servers will be implemented with added load balancing feature. There will be a cluster of load balancers, which will be configured using Linux HA, as well as a cluster of application and database servers.  
  
+ ![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/ResilientPhysicalArchitecture.png)
+ 
 ## Logical Architecture- Inside an Application Server:
 The representation below exemplifies the MVC architecture and gives a closer look to the logical structures and frameworks inside each application server.
 
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/LogicalPhysicalArchitecture.png)
 
 # Project Design:
 
@@ -103,6 +110,8 @@ The representation below exemplifies the MVC architecture and gives a closer loo
 -	The relation between the language entity and the message entity is that of 1...n, as each language will have messages/discussions under it. 
 -	Each languages has one or many moderators and tutors attributed to it. 
  
+ ![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/DataEntities.png)
+ 
 ### Services Class Diagram:
 
 There are three services: 
@@ -111,12 +120,17 @@ There are three services:
 - The user service that takes care of logging in and out users, identifying the type of the user, authority and permissions.
 - The discussion service that takes care of reporting users and tutors, checking if the tutor is blocked before being allowed to post.
  
+ ![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/ServicesModels.png)
+ 
 ## Sequence Diagram:
 
 ### Data-driven Sequence Diagram:
 For a data-driven operation, the Json file in the request’s body of the user is parsed and deserialized (translated) to form an object. If the object’s attributes are valid it can be saved and mapped to a model (i.e.: in case of a create or update). Then either a response is returned or in case of a GET request, the framework serializes the object. The rendered Json file is then returned to the user. 
 Serializer is a class in django’s rest framework API.
 
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/DataDrivenSequenceDiagram.png)
+
 ### Service-driven Sequence Diagram:
 The following diagram represents how a REST request from a client propagates forward and backward through the layers. When a request is received through a REST controller (in the case of django, a view), the deserializition forms the object which is then passed to the appropriate service. The service calls on the model and performs its logical operations. The service returns either a response or an object, in which case it is serialized and rendered into a Json file before getting returned to the client.
-s
+
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/ServiceDrivenSequenceDiagram.png)
