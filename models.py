@@ -123,3 +123,12 @@ class Rating(models.Model):
 class Blocked(models.Model):
     user = models.ForeignKey(User, related_name="blocked_users", null=True, on_delete=models.CASCADE)
     userb = models.ManyToManyField(User, related_name="blocked_by")
+
+#-------------------------------------------------------------
+#Reported Users
+class Reported(models.Model):
+    reported_user = models.ForeignKey(User, related_name="reported_user", null=True, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User, related_name="reported_by")
+    reported_post = models.ManyToManyField(Message, null=True, related_name="reported_post")
+    reported_comment = models.ManyToManyField(Comment, null=True, related_name="reported_comment")
+    reported_reply = models.ManyToManyField(Reply, null=True, related_name="reported_reply")
