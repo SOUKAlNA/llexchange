@@ -96,7 +96,7 @@ To enforce the No SPoF and high availability requirements, reverse proxying Ngin
 ## Logical Architecture- Inside an Application Server:
 The representation below exemplifies the MVC architecture and gives a closer look to the logical structures and frameworks inside each application server.
 
-![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/LogicalPhysicalArchitecture.png)
+![alt text](https://github.com/SOUKAlNA/llexchange/blob/main/LogicalArchitecture.png)
 
 # Project Design:
 
